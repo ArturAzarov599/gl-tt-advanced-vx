@@ -1,0 +1,38 @@
+* {
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+	list-style: none;
+	box-sizing: border-box;
+	color: white;
+}
+
+.container {
+	max-width: 1620px;
+	padding: 0 10px;
+	margin: 0 auto;
+}
+
+._container {
+	max-width: 1420px;
+	padding: 0 10px;
+	margin: 0 auto;
+}
+
+body {
+	min-height: 100vh;
+	background-image: url("./pngtree-romantic-dreamy-purple-transparent-bubble-h5-background-image_124519.jpg");
+	background-position: left bottom;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+button {
+	background-color: darkcyan;
+	color: white;
+	padding: 10px;
+	border-radius: 5px;
+	text-transform: uppercase;
+	font-size: 17px;
+}
