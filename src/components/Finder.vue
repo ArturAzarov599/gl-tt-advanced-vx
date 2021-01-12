@@ -5,20 +5,38 @@
         </span>
 
         <label>
-            <input type="text">
+            <input
+                    type="text"
+                    @input="changeRequestDataHandler($event.target.value)"
+            >
             <span class="finder__icon">&#x26B2;</span>
         </label>
     </div>
 </template>
 
 <script>
+    import {useStore} from "vuex";
+
     export default {
-        name: "Finder"
+        name: "Finder",
+        setup() {
+            const store = useStore();
+
+            const changeRequestDataHandler = newRequestData => {
+                store.dispatch({
+                    type: 'changeRequest',
+                    newRequestData
+                })
+            }
+
+            return {
+                changeRequestDataHandler,
+            }
+        }
     }
 </script>
 
 <style scoped>
-
     .finder {
         display: flex;
         align-items: center;
@@ -56,6 +74,4 @@
     .finder__icon {
         transform: rotate(-45deg);
     }
-
-
 </style>

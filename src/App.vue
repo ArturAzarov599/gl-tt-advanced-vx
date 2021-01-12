@@ -28,11 +28,11 @@
 
     .page-enter-active, .page-leave-active {
         opacity: 0;
-        transform: translateX(12em);
+        transform: translateY(-12em);
     }
 
     .page-enter, .page-leave-to {
-        transition: all .3s ease;
+        transition: all .8s ease;
     }
 
 

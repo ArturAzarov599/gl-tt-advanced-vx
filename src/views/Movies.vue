@@ -1,12 +1,17 @@
 <template>
     <div class="movies">
         <Finder/>
+
+        <PageSwitcher/>
+
         <div v-if="loading" class="movies-loader">
             <Loader/>
         </div>
 
-        <div v-else class="movies-list">
-
+        <div v-else>
+            <MovieList
+                    :movieList="movieList"
+            />
         </div>
     </div>
 </template>
@@ -16,25 +21,40 @@
     import Loader from "../components/CustomLoader";
     import {useMutation, useState} from "../store/helpers";
     import {watchEffect} from "vue";
+    import {useStore} from "vuex";
+    import MovieList from "../components/MovieList";
+    import PageSwitcher from "../components/PageSwitcher";
 
     export default {
         name: "Movies",
-        components: {Loader, Finder},
+        components: {PageSwitcher, MovieList, Loader, Finder},
         setup() {
+            const store = useStore();
             const {loading} = useState(['loading']);
             const {showLoading} = useMutation(['showLoading']);
             const {hideLoading} = useMutation(['hideLoading']);
+            const {movieList} = useState(['movieList'])
 
             watchEffect(() => {
-                console.log("watchEffect");
                 showLoading()
+
+                store.dispatch({
+                    type: 'getGenres'
+                })
+
+                store.dispatch({
+                    type: 'changeRequest',
+                    newRequestData: ""
+                })
+
                 setTimeout(() => {
                     hideLoading()
-                }, 2000)
+                }, 1000)
             })
 
             return {
-                loading
+                loading,
+                movieList
             }
         }
     }
@@ -56,5 +76,4 @@
         align-items: center;
         justify-content: center;
     }
-
 </style>
