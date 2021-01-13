@@ -38,7 +38,8 @@ const store = createStore({
         },
         changeMovies(state, apiResponse) {
             state.movieList = apiResponse.results;
-            state.totalPages = apiResponse.total_pages
+            state.totalPages = apiResponse.total_pages;
+            state.currentPage = apiResponse.results.length ? state.currentPage : 1
         },
         increment(state) {
             state.currentPage += 1

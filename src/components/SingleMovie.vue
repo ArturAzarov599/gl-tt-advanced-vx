@@ -47,7 +47,6 @@
                 }
             });
             const {genres} = useState(['genres'])
-            console.log(genres);
 
             const pushToLS = (movie) => {
                 localStorage.setItem("movie", JSON.stringify(movie))
@@ -105,10 +104,6 @@
     .single-movie__image:hover img {
         transform: scale(1.1);
         transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
-    }
-
-    .single-movie__genre {
-        /*display: flex;*/
     }
 
     .single-movie__genre li {
